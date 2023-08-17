@@ -1,0 +1,31 @@
+@baseUrl = http://localhost
+@port = 3333
+@host = {{baseUrl}}:{{port}}
+
+### Get
+GET {{host}}/
+
+### Get books
+GET {{host}}/books
+
+### Get book
+GET {{host}}/books/2
+
+### Post book
+POST {{host}}/books
+content-type: application/json
+
+{
+  "id": 3,
+  "title": "Harry Potter 333",
+  "author": "J. 12K. Rowling"
+}
+
+### Update book
+PUT {{host}}/books/2
+content-type: application/json
+
+{
+  "title": "Harry Potter 555",
+  "author": "Rowling"
+}
