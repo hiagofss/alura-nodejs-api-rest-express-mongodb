@@ -18,9 +18,9 @@ app.get("/books", (req, res) => {
 });
 
 app.get("/books/:id", (req, res) => {
-  const { id } = req.params;
+  const id = Number(req.params.id);
 
-  const book = findBook(Number(id));
+  const book = findBook(id);
 
   if (!book) {
     return res.status(404).send("Book not found");
@@ -36,9 +36,9 @@ app.post("/books", (req, res) => {
 });
 
 app.put("/books/:id", (req, res) => {
-  const { id } = req.params;
+  const id = Number(req.params.id);
 
-  const book = findBook(Number(id));
+  const book = findBook(id);
 
   console.log(book);
 
@@ -48,7 +48,7 @@ app.put("/books/:id", (req, res) => {
 
   const { title, author } = req.body;
 
-  const bookInfoUpdate = { title, author };
+  const bookInfoUpdate = { id, title, author };
 
   books[books.indexOf(book)] = bookInfoUpdate;
 
