@@ -29,3 +29,6 @@ content-type: application/json
   "title": "Harry Potter 555",
   "author": "Rowling"
 }
+
+### Delete book
+DELETE {{host}}/books/2

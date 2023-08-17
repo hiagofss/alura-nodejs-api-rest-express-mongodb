@@ -55,6 +55,22 @@ app.put("/books/:id", (req, res) => {
   res.status(200).send("Book updated successfully");
 });
 
+app.delete("/books/:id", (req, res) => {
+  const id = Number(req.params.id);
+
+  const book = findBook(id);
+
+  if (!book) {
+    return res.status(404).send("Book not found");
+  }
+
+  books.splice(books.indexOf(book), 1);
+
+  res.status(200).send("Book deleted successfully");
+
+  console.log(books);
+});
+
 function findBook(id) {
   console.log(typeof id);
   books.forEach((book) => console.log(typeof book.id));
