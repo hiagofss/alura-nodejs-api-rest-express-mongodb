@@ -35,6 +35,26 @@ app.post("/books", (req, res) => {
   res.status(201).send("Book added to the database");
 });
 
+app.put("/books/:id", (req, res) => {
+  const { id } = req.params;
+
+  const book = findBook(Number(id));
+
+  console.log(book);
+
+  if (!book) {
+    return res.status(404).send("Book not found");
+  }
+
+  const { title, author } = req.body;
+
+  const bookInfoUpdate = { title, author };
+
+  books[books.indexOf(book)] = bookInfoUpdate;
+
+  res.status(200).send("Book updated successfully");
+});
+
 function findBook(id) {
   console.log(typeof id);
   books.forEach((book) => console.log(typeof book.id));
