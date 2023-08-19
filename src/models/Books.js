@@ -6,7 +6,7 @@ class Book {
     title: { type: String, required: true },
     author: { type: String, required: true },
     publisher: { type: String, required: true },
-    numberOfPage: { type: Number },
+    numberOfPages: { type: Number },
   });
 }
 

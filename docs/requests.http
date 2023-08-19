@@ -9,20 +9,21 @@ GET {{host}}/
 GET {{host}}/books
 
 ### Get book
-GET {{host}}/books/2
+GET {{host}}/books/64dd78b03ed003b96cd2f5ce
 
 ### Post book
 POST {{host}}/books
 content-type: application/json
 
 {
-  "id": 3,
-  "title": "Harry Potter 333",
-  "author": "J. 12K. Rowling"
+  "title": "Harry Potter {{$randomInt 0 99}}",
+  "author": "J. 12K. Rowling",
+  "publisher": "Rowling",
+  "numberOfPages": {{$randomInt 150 500}}
 }
 
 ### Update book
-PUT {{host}}/books/2
+PUT {{host}}/books/64e0e489fddf725ca49ed72a
 content-type: application/json
 
 {
@@ -31,4 +32,4 @@ content-type: application/json
 }
 
 ### Delete book
-DELETE {{host}}/books/2
+DELETE {{host}}/books/64e0e489fddf725ca49ed72a
