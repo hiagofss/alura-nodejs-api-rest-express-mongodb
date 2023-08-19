@@ -1,21 +1,24 @@
 import express from "express";
 
-import db from "./config/mongoDb.js";
+import database from "./config/mongoDb.js";
 
-db.on("error", console.error.bind(console, "MongoDB connection error:"));
-db.once("open", () => console.log("Connected to MongoDB"));
+import books from "./models/Books.js";
+
+database.on("error", console.error.bind(console, "MongoDB connection error:"));
+database.once("open", () => console.log("Connected to MongoDB"));
 
 const app = express();
 
 app.use(express.json());
 
-const books = [
-  { id: 1, title: "Harry Potter", author: "J. K. Rowling" },
-  { id: 2, title: "Lord of the Rings", author: "J. R. R. Tolkien" },
-];
+app.get("/", async (req, res) => {
+  try {
+    let booksResult = await books.find();
 
-app.get("/", (req, res) => {
-  res.status(200).send("Hello World");
+    res.status(200).json(booksResult);
+  } catch (error) {
+    res.status(404).send(error.message);
+  }
 });
 
 app.get("/books", (req, res) => {
