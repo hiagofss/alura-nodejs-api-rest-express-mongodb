@@ -164,3 +164,8 @@ dist
 
 # Docker data folders
 data/
+
+.env*
+.flaskenv*
+!.env.project
+!.env.vault

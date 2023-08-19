@@ -1,5 +1,10 @@
 import express from "express";
 
+import db from "./config/mongoDb.js";
+
+db.on("error", console.error.bind(console, "MongoDB connection error:"));
+db.once("open", () => console.log("Connected to MongoDB"));
+
 const app = express();
 
 app.use(express.json());
