@@ -3,7 +3,7 @@ import Books from "../models/Book.js";
 class BooksController {
   async getBooks(req, res) {
     try {
-      let booksResult = await Books.find();
+      let booksResult = await Books.find().populate("author").exec();
 
       res.status(200).json(booksResult);
     } catch (error) {
@@ -27,7 +27,7 @@ class BooksController {
     let { id } = req.params;
 
     try {
-      let bookUpdated = await Books.findByIdAndUpdate(id, { $set: req.body });
+      await Books.findByIdAndUpdate(id, { $set: req.body });
 
       res.status(200).send({ message: "Book updated successfully" });
     } catch (error) {
@@ -39,7 +39,7 @@ class BooksController {
     let { id } = req.params;
 
     try {
-      const book = await Books.findById(id);
+      const book = await Books.findById(id).populate("author").exec();
 
       if (!book) {
         res.status(404).send("Book not found");

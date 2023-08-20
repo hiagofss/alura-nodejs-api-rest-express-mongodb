@@ -1,6 +1,7 @@
 @baseUrl = http://localhost
 @port = 3333
 @host = {{baseUrl}}:{{port}}
+@defaultAuthor = 64e29abe2903061ce2cd14ab
 
 ### Get
 GET {{host}}/
@@ -23,12 +24,11 @@ content-type: application/json
 }
 
 ### Update book
-PUT {{host}}/books/
+PUT {{host}}/books/64e0c7b54f3792b2ddb09635
 content-type: application/json
 
 {
-  "title": "Harry Potter 555",
-  "author": "Rowling"
+  "author": "{{defaultAuthor}}"
 }
 
 ### Delete book
