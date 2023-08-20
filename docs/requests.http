@@ -23,7 +23,7 @@ content-type: application/json
 }
 
 ### Update book
-PUT {{host}}/books/64e0e489fddf725ca49ed72a
+PUT {{host}}/books/
 content-type: application/json
 
 {
@@ -33,3 +33,30 @@ content-type: application/json
 
 ### Delete book
 DELETE {{host}}/books/64e0e489fddf725ca49ed72a
+
+### Get authors
+GET {{host}}/authors
+
+### Get author
+GET {{host}}/authors/64e29abe2903061ce2cd14ab
+
+### Post author
+POST {{host}}/authors
+content-type: application/json
+
+{
+  "name": "Rowling",
+  "nationality":"BR"
+}
+
+### Update author
+PUT {{host}}/authors/64e0e52f7e34a2b3dcdb3afe
+content-type: application/json
+
+{
+  "name": "Rowling",
+  "nationality":"BR"
+}
+
+### Delete book
+DELETE {{host}}/authors/64e29ac22903061ce2cd14ad
