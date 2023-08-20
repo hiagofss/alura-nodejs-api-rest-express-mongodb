@@ -64,6 +64,22 @@ class BooksController {
     }
     return Books.findById(id);
   }
+
+  async getBooksByPublisher(req, res) {
+    let { publisher } = req.query;
+
+    try {
+      const books = await Books.find({ publisher: publisher });
+
+      if (!books) {
+        res.status(404).send("Book not found");
+      }
+
+      res.status(200).json(books);
+    } catch (error) {
+      res.status(500).json(error.message);
+    }
+  }
 }
 
 export default new BooksController();
